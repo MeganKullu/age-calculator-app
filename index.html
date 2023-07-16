@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="./dist/output.css">
+  <title>Age calculator app</title>
+
+</head>
+
+<body class="bg-light-gray flex flex-col justify-center place-items-center h-screen">
+
+  <div class="grid place-items-center h-screen">
+
+    <main class="ml-3 mr-3 mt-14 lg:mt-0 py-12 px-7 bg-white rounded-t-3xl rounded-bl-3xl rounded-br-4xl lg:w-1/2 ">
+      <form action="" class="flex place-content-between gap-6 mb-20 w-full lg:w-9/12">
+        <section class="flex flex-col">
+          <label for="" class="text-xs text-smokey-grey tracking-wider font-bold ">DAY</label>
+          <input class="w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number">
+        </section>
+        <section class="flex flex-col">
+          <label for="" class="text-xs text-smokey-grey tracking-wider font-bold">MONTH</label>
+          <input class="w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number">
+        </section>
+        <section class="flex flex-col">
+          <label for="" class="text-xs text-smokey-grey tracking-wider font-bold">YEAR</label>
+          <input class="w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number">
+        </section>
+      </form>
+
+      <section class="flex mb-20 lg:mb-16 place-content-center lg:place-content-end place-items-center ">
+        <hr class="w-full h-1 mx-auto  bg-light-gray border-0 rounded dark:bg-light-gray">
+        <div class="absolute z-3 justify-center bg-purple rounded-full p-4 -mt-2"><svg
+            xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44">
+            <g fill="none" stroke="#FFF" stroke-width="2">
+              <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
+            </g>
+          </svg></div>
+      </section>
+
+      <section class="flex flex-col text-5xl lg:text-6xl italic font-extrabold gap-2">
+        <output><span class="text-purple felx place-content-center" id="yearsCalc">--</span>years</output>
+        <output><span class="text-purple felx place-content-center" id="monthsCalc">--</span>months</output>
+        <output><span class="text-purple felx place-content-center" id="daysCalc">--</span>days</output>
+      </section>
+    </main>
+
+    <footer class="text-smokey-grey font-bold text-center mt-2">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Megan Kullu</a>.
+    </footer>
+
+  </div>
+</body>
+
+</html>
