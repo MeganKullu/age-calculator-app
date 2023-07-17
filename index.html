@@ -8,6 +8,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="./dist/output.css">
   <title>Age calculator app</title>
+  
+
 
 </head>
 
@@ -16,19 +18,25 @@
   <div class="flex flex-col justify-center items-center ">
 
     <main class="ml-3 mr-3 mt-14 lg:mt-0 py-12 px-7 bg-white rounded-t-3xl rounded-bl-3xl rounded-br-4xl lg:w-1/2 ">
-      <form action="" class="flex place-content-between gap-6 mb-20 w-full lg:w-9/12">
+      <form action="" class="flex place-content-between gap-6 mb-20 w-full lg:w-9/12" id="formDetails">
         <section class="flex flex-col">
-          <label for="" class="text-xs text-smokey-grey tracking-wider font-bold ">DAY</label>
-          <input class="w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number">
+          <label for="day" class="text-xs text-smokey-grey tracking-wider font-bold ">DAY</label>
+          <input class="hover:border-2 w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number" id="day">
+          <small class="error text-light-red text-xs italic" id="dayError"></small>
         </section>
+        
         <section class="flex flex-col">
           <label for="" class="text-xs text-smokey-grey tracking-wider font-bold">MONTH</label>
-          <input class="w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number">
+          <input class="hover:border-2 w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number" id="month">
+          <small class="error text-light-red text-xs italic" id="monthError"></small>
         </section>
+        
         <section class="flex flex-col">
-          <label for="" class="text-xs text-smokey-grey tracking-wider font-bold">YEAR</label>
-          <input class="w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number">
+          <label for="year" class="text-xs text-smokey-grey tracking-wider font-bold">YEAR</label>
+          <input class="hover:border-2 w-full text-base text-bold p-3 rounded-lg border border-light-gray" type="number" id="year">
+          <small class="error text-light-red text-xs italic" id="yearError"></small>
         </section>
+        
       </form>
 
       <section class="flex mb-20 lg:mb-16 place-content-center lg:place-content-end place-items-center ">
@@ -42,9 +50,9 @@
       </section>
 
       <section class="flex flex-col text-5xl lg:text-6xl italic font-extrabold gap-2">
-        <output><span class="text-purple felx place-content-center" id="yearsCalc">--</span>years</output>
-        <output><span class="text-purple felx place-content-center" id="monthsCalc">--</span>months</output>
-        <output><span class="text-purple felx place-content-center" id="daysCalc">--</span>days</output>
+        <output class="inline-flex place-items-start"><span class=" w-full text-purple " id="yearsCalc">--</span>years</output>
+        <output class="inline-flex"><span class=" w-full text-purple " id="monthsCalc">--</span>months</output>
+        <output class="inline-flex"><span class="w-full text-purple " id="daysCalc">--</span>days</output>
       </section>
     </main>
 
@@ -54,6 +62,7 @@
     </footer>
 
   </div>
+  <script src="./src/app.js"></script>
 </body>
 
 </html>
