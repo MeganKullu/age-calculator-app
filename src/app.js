@@ -1,6 +1,6 @@
 // Event listeners for real-time validation
-document.getElementById("day").addEventListener("input", validateDay);
-document.getElementById("month").addEventListener("input", validateMonth);
+document.getElementById("day").addEventListener("input", calculateAge);
+document.getElementById("month").addEventListener("input", calculateAge);
 document.getElementById("year").addEventListener("input", calculateAge);
 
 // Getting the current date, year, and month
@@ -48,7 +48,7 @@ function leapYear(year) {
 }
 
 // Day validation based on month and year
-function validateDay(day,month) {
+function validateDay(day,month,year) {
   var dayError = document.getElementById('dayError');
 
   var monthsWith31Days = [1, 3, 5, 7, 8, 10, 12];
@@ -58,17 +58,22 @@ function validateDay(day,month) {
 
   if ( parseInt(day) < 1 || parseInt(day) > maxDays) {
     dayError.innerHTML = 'Must be a valid day';
-    if ( monthsWith30Days.includes(month) && day > 30) {
-        dayError.innerHTML = 'This month has 30 days';
-        if ( monthsWith31Days.includes(month) && day > 31) {
-            dayError.innerHTML = 'This month has 31 days';
-            if(month == 2 && leapYear() && day > 28) {
-                dayError.innerHTML = 'This a leap year'
-            }
-        }
-    }
+    return false;
   }
-
+  if ( monthsWith30Days.includes(month) && day > 30) {
+        dayError.innerHTML = 'This month has 30 days';
+    return false;
+    }
+  if ( monthsWith31Days.includes(month) && day > 31) {
+        dayError.innerHTML = 'This month has 31 days';
+    return false;
+    }
+  if(month == 2 && leapYear(year) && day > 28) {
+       dayError.innerHTML = 'This a leap year'
+    return false;
+    }
+        
+    
   dayError.innerHTML = '';
   return true;
 }
@@ -84,7 +89,7 @@ function validateMonth(month) {
 
   monthError.innerHTML = '';
 
-  return validateDay(parseInt(month), parseInt(document.getElementById('year').value));
+  return validateDay(parseInt(month), parseInt(document.getElementById('year').value),year);
 }
 
 // Year validation
