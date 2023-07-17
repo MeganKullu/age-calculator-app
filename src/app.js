@@ -1,6 +1,6 @@
 // Event listeners for real-time validation
-document.getElementById("day").addEventListener("input", calculateAge);
-document.getElementById("month").addEventListener("input", calculateAge);
+document.getElementById("day").addEventListener("input", validateDay);
+document.getElementById("month").addEventListener("input", validateMonth);
 document.getElementById("year").addEventListener("input", calculateAge);
 
 // Getting the current date, year, and month
@@ -48,7 +48,7 @@ function leapYear(year) {
 }
 
 // Day validation based on month and year
-function validateDay(day, month, year) {
+function validateDay(day,month) {
   var dayError = document.getElementById('dayError');
 
   var monthsWith31Days = [1, 3, 5, 7, 8, 10, 12];
@@ -56,9 +56,17 @@ function validateDay(day, month, year) {
 
   var maxDays = 31;
 
-  if (day === '' || isNaN(day) || parseInt(day) < 1 || parseInt(day) > maxDays) {
-    dayError.innerHTML = day === '' ? '' : 'Must be a valid day';
-    return false;
+  if ( parseInt(day) < 1 || parseInt(day) > maxDays) {
+    dayError.innerHTML = 'Must be a valid day';
+    if ( monthsWith30Days.includes(month) && day > 30) {
+        dayError.innerHTML = 'This month has 30 days';
+        if ( monthsWith31Days.includes(month) && day > 31) {
+            dayError.innerHTML = 'This month has 31 days';
+            if(month == 2 && leapYear() && day > 28) {
+                dayError.innerHTML = 'This a leap year'
+            }
+        }
+    }
   }
 
   dayError.innerHTML = '';
@@ -69,8 +77,8 @@ function validateDay(day, month, year) {
 function validateMonth(month) {
   var monthError = document.getElementById('monthError');
 
-  if (month === '' || isNaN(month) || parseInt(month) < 1 || parseInt(month) > 12) {
-    monthError.innerHTML = month === '' ? '' : 'Must be a valid month';
+  if (parseInt(month) < 1 || parseInt(month) > 12) {
+    monthError.innerHTML = 'Must be a valid month';
     return false;
   }
 
@@ -84,8 +92,8 @@ function validateYear() {
   var year = document.getElementById('year').value;
   var yearError = document.getElementById('yearError');
 
-  if (year === '' || isNaN(year) || parseInt(year) > currentYear) {
-    yearError.innerHTML = year === '' ? '' : 'Must be in the past';
+  if ( parseInt(year) > currentYear) {
+    yearError.innerHTML = 'Must be in the past';
     return false;
   }
 
