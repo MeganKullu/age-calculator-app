@@ -37,7 +37,7 @@ function calculateAge() {
       document.getElementById('daysCalc').innerHTML = '--';
   
       if (!dayValid) {
-        document.getElementById('daysCalc').innerHTML = '';
+        document.getElementById('daysCalc').innerHTML = '--';
       }
   
       document.getElementById('yearsCalc').classList.add('error');
@@ -48,7 +48,10 @@ function calculateAge() {
   
 // Leap year calculation
 function leapYear(year) {
-    return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
+    if (year === undefined) {
+      return false;
+    }
+  else return year % 100 === 0 ? year % 400 === 0 : year % 4 === 0;
 }
 
 // Day validation based on month and year
@@ -68,32 +71,47 @@ function validateDay(day, month, year) {
         dayError.innerHTML = 'Must be a valid day';
         return false;
     }
-
+    
     if (month === 2) {
         if (leapYear(year)) {
           if (day > 29) {
             dayError.innerHTML = 'Feb has 29 days in this year';
             return false;
           }
-        } else {
-          if (day > 28) {
-            dayError.innerHTML = 'Feb has 28 days';
+        } 
+    }
+
+
+    if (month === 2) {
+      
+        if (year !== true) {
+          if (day === 29 && (!leapYear(year))) {
+            dayError.innerHTML = 'Feb has 28 days in this year';
             return false;
           }
+
+          else if (day === 29 && year == "") {
+            dayError.innerHTML = '';
+          }
+          else dayError.innerHTML = "" ;
         }
+          
     }
+
+
 
     if (monthsWith30Days.includes(month) && day > 30) {
         dayError.innerHTML = 'This month has 30 days';
         return false;
     }
+
     if (monthsWith31Days.includes(month) && day > 31) {
         dayError.innerHTML = 'This month has 31 days';
         return false;
     }
 
 
-  return true;
+   return true;
   }
 
 // Month validation
@@ -122,6 +140,7 @@ function validateYear() {
 
     if (parseInt(year) < 1900) {
         yearError.innerHTML = 'Are you alive?';
+        year.style.border = 'border-light-red';
         return false;
     }
 

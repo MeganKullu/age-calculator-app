@@ -577,12 +577,12 @@ body {
   margin-top: 0.5rem;
 }
 
-.flex{
-  display: flex;
+.inline-block{
+  display: inline-block;
 }
 
-.inline-flex{
-  display: inline-flex;
+.flex{
+  display: flex;
 }
 
 .h-1{
@@ -607,10 +607,6 @@ body {
 
 .place-content-between{
   place-content: space-between;
-}
-
-.place-items-start{
-  place-items: start;
 }
 
 .place-items-center{
