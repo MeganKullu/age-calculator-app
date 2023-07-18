@@ -48,7 +48,7 @@ The challenge was to;
 ## My process
 
 Started off by building the structure with HTML.
-Added some basic styling such as font family, color scheme etc using variables from TailwindCSS library 
+Added some basic styling such as font family, color scheme etc using variables from TailwindCSS library.
 I used flex box to align items vertically as well as center them horizontally by justifying them center.
 Created a app.js file that would query the inputs and perform calculations. Added event listeners for real time validation and created functions that updated the outputs dynamically.
 Made sure to consider leap years and months with different days in order for my results to be as accurate as possible.
